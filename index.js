@@ -2,6 +2,7 @@ const form1 = document.getElementById("formulir1");
 const formGejala = document.getElementById("formulir_tidak");
 const formPengobatan = document.getElementById("formulir_ya");
 const hasil = document.getElementById("halamanHasil");
+let totalSkor = 0;
 
 form1.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -23,16 +24,28 @@ form1.addEventListener("submit", function (e) {
 
 formGejala.addEventListener("submit", function (e) {
     e.preventDefault();
+    
+    totalSkor = 0;
+
+    // Ambil semua radio yang dipilih
+    const checkedRadios = formGejala.querySelectorAll('input[type="radio"]:checked');
+
+    checkedRadios.forEach((radio) => {
+        const skor = parseInt(radio.getAttribute("data-score")) || 0;
+        totalSkor += skor;
+    });
+
     formGejala.style.display = "none";
     hasil.style.display = "block";
-    // alert("Terima kasih! Form gejala dan risiko berhasil dikirim.");
+
+    hasil.innerHTML += `<p><strong>Total Skor Anda: ${totalSkor}</strong></p>`;
 });
 
 formPengobatan.addEventListener("submit", function (e) {
     e.preventDefault();
+
     formPengobatan.style.display = "none";
     hasil.style.display = "block";
-    // alert("Terima kasih! Informasi pengobatan berhasil dikirim.");
 });
 //       document
 //         .getElementById("formulir")

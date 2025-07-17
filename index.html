@@ -132,11 +132,6 @@
         <form id="formulir_tidak" style="display:none;">
           <h2>Skrining Gejala TBC</h2>
           <p>Jawablah sesuai kondisi saat ini</p>
-<!-- 
-          <div class="question"><label>Apakah Anda mengalami batuk berdarah? *</label>
-            <input type="radio" name="batuk_berdarah" value="Ya" required /> Ya
-            <input type="radio" name="batuk_berdarah" value="Tidak" /> Tidak
-          </div> -->
 
         <label>
           Apakah Anda mengalami batuk berdahak?
@@ -144,11 +139,11 @@
         </label>
         <div class="options">
           <label>
-            <input type="radio" name="batuk_berdahak" value="Ya" required />
+            <input type="radio" name="batuk_berdahak" value="Ya" data-score="4" required />
             Ya
           </label>
           <label>
-            <input type="radio" name="batuk_berdahak" value="Tidak" required />
+            <input type="radio" name="batuk_berdahak" value="Tidak" data-score="0" required />
             Tidak
           </label>
         </div>
@@ -234,11 +229,11 @@
         </label>
         <div class="options">
           <label>
-            <input type="radio" name="nyeri_dada" value="Ya" required />
+            <input type="radio" name="nyeri_dada" value="Ya" data-score="2" required />
             Ya
           </label>
           <label>
-            <input type="radio" name="nyeri_dada" value="Tidak" required />
+            <input type="radio" name="nyeri_dada" value="Tidak" data-score="0" required />
             Tidak
           </label>
         </div>
@@ -267,11 +262,11 @@
         </label>
         <div class="options">
           <label>
-            <input type="radio" name="kontak" value="Ya" required />
+            <input type="radio" name="kontak" value="Ya" data-score="5" required />
             Ya
           </label>
           <label>
-            <input type="radio" name="kontak" value="Tidak" required />
+            <input type="radio" name="kontak" value="Tidak" data-score="0" required />
             Tidak
           </label>
         </div>
@@ -297,11 +292,11 @@
         </label>
         <div class="options">
           <label>
-            <input type="radio" name="pengobatan_sebelumnya" value="Ya" required />
+            <input type="radio" name="pengobatan_sebelumnya" value="Ya" data-score="2" required />
             Ya
           </label>
           <label>
-            <input type="radio" name="pengobatan_sebelumnya" value="Tidak" required />
+            <input type="radio" name="pengobatan_sebelumnya" value="Tidak" data-score="0" required />
             Tidak
           </label>
         </div>
@@ -327,11 +322,11 @@
         </label>
         <div class="options">
           <label>
-            <input type="radio" name="merokok" value="Ya" required />
+            <input type="radio" name="merokok" value="Ya" data-score="1" required />
             Ya
           </label>
           <label>
-            <input type="radio" name="merokok" value="Tidak" required />
+            <input type="radio" name="merokok" value="Tidak" data-score="0" required />
             Tidak
           </label>
         </div>
