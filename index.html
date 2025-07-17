@@ -4,109 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Skrining Gejala dan Faktor Resiko TBC</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background: #f3f4f6;
-        margin: 0;
-        padding: 0;
-        background-color: #f5eaea;
-      }
-
-      .container {
-        max-width: 700px;
-        margin: 40px auto;
-        background: #fff;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      h1 {
-        margin-bottom: 10px;
-        font-size: 24px;
-        color: #202124;
-      }
-
-      p.desc {
-        color: #5f6368;
-        font-size: 14px;
-        margin-bottom: 30px;
-      }
-
-      label {
-        display: block;
-        margin-top: 20px;
-        font-weight: bold;
-      }
-
-      input[type="text"],
-      input[type="umur"],
-      input[type="number"],
-      select {
-        width: 100%;
-        padding: 10px;
-        margin-top: 6px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 14px;
-      }
-
-      .options {
-        margin-top: 10px;
-      }
-
-      .options label {
-        font-weight: normal;
-        display: block;
-      }
-
-      .btn-submit {
-        margin-top: 30px;
-        background-color: #1a73e8;
-        color: white;
-        padding: 12px 24px;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 16px;
-      }
-
-      .btn-submit:hover {
-        background-color: #1765cc;
-      }
-
-      .success-message {
-        display: none;
-        margin-top: 20px;
-        background: #d7f0d7;
-        padding: 10px;
-        border-radius: 6px;
-        color: #2e7d32;
-      }
-      /* 
-      .lainnya-text {
-        margin-left: 10px;
-        padding: 5px;
-        width: 300px;
-      } */
-
-      .required {
-        color: red;
-      }
-
-      /* Chrome, Safari, Edge, Opera */
-      input::-webkit-outer-spin-button,
-      input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-
-      /* Firefox */
-      input[type="number"] {
-        -moz-appearance: textfield;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <div class="container">
@@ -119,7 +17,7 @@
         tbyogyakarta@gmail.com instagaram @tbyogyakarta@gmail.com
       </p>
 
-      <form id="formulir">
+      <form id="formulir1">
         <label for="nama">Nama Lengkap <span class="required">*</span></label>
         <input type="text" id="nama" name="nama" required />
 
@@ -210,150 +108,298 @@
           />
         </div>
 
-        <label
-          >Apakah saat ini anda sedang menjalani pengobatan TBC
-          <span class="required">*</span></label
-        >
+        <label>
+          Apakah saat ini anda sedang menjalani pengobatan TBC
+          <span class="required">*</span>
+        </label>
         <div class="options">
-          <label
-            ><input type="radio" name="pengobatan" value="Ya" required />
-            Ya</label
-          >
-          <label
-            ><input type="radio" name="pengobatan" value="Tidak" required />
-            Tidak</label
-          >
+          <label>
+            <input type="radio" name="pengobatan" value="Ya" required />
+            Ya
+          </label>
+          <label>
+            <input type="radio" name="pengobatan" value="Tidak" required />
+            Tidak
+          </label>
         </div>
 
-        <label for="nama">
-          Dimana anda mendapatkan obat TBC? sebutkan nama fasilitas yang
-          memberikan obat TBC <span class="required">*</span>
+        <button type="submit" class="btn-next">Berikutnya</button>
+
+          <!-- <button type="submit" class="btn-submit">Kirim</button> -->
+        </form>
+
+        <!-- STEP 2 -->
+        <form id="formulir_tidak" style="display:none;">
+          <h2>Skrining Gejala TBC</h2>
+          <p>Jawablah sesuai kondisi saat ini</p>
+<!-- 
+          <div class="question"><label>Apakah Anda mengalami batuk berdarah? *</label>
+            <input type="radio" name="batuk_berdarah" value="Ya" required /> Ya
+            <input type="radio" name="batuk_berdarah" value="Tidak" /> Tidak
+          </div> -->
+
+        <label>
+          Apakah Anda mengalami batuk berdahak?
+          <span class="required">*</span>
         </label>
-        <input type="text" id="fasilitas" name="fasilitas" required />
+        <div class="options">
+          <label>
+            <input type="radio" name="batuk_berdahak" value="Ya" required />
+            Ya
+          </label>
+          <label>
+            <input type="radio" name="batuk_berdahak" value="Tidak" required />
+            Tidak
+          </label>
+        </div>
+
+        <label>
+          Apakah Anda mengalami batuk yang berlangsung selama lebih dari 2 minggu?  
+          <span class="required">*</span>
+        </label>
+        <div class="options">
+          <label>
+            <input type="radio" name="batuk_2_minggu" value="Ya" required />
+            Ya
+          </label>
+          <label>
+            <input type="radio" name="batuk_2_minggu" value="Tidak" required />
+            Tidak
+          </label>
+        </div>
+
+        <label>
+          Apakah Anda mengalami batuk berdarah?  
+          <span class="required">*</span>
+        </label>
+        <div class="options">
+          <label>
+            <input type="radio" name="batuk_berdarah" value="Ya" required />
+            Ya
+          </label>
+          <label>
+            <input type="radio" name="batuk_berdarah" value="Tidak" required />
+            Tidak
+          </label>
+        </div>
+
+        <label>
+          Apakah Anda mengalami demam yang tidak kunjung sembuh?  
+          <span class="required">*</span>
+        </label>
+        <div class="options">
+          <label>
+            <input type="radio" name="demam" value="Ya" required />
+            Ya
+          </label>
+          <label>
+            <input type="radio" name="demam" value="Tidak" required />
+            Tidak
+          </label>
+        </div>
+
+        <label>
+          Apakah Anda mengalami keringat di malam hari ?  
+          <span class="required">*</span>
+        </label>
+        <div class="options">
+          <label>
+            <input type="radio" name="keringat" value="Ya" required />
+            Ya
+          </label>
+          <label>
+            <input type="radio" name="keringat" value="Tidak" required />
+            Tidak
+          </label>
+        </div>
+
+        <label>
+          Apakah berat badan Anda menurun tanpa sebab yang jelas? 
+          <span class="required">*</span>
+        </label>
+        <div class="options">
+          <label>
+            <input type="radio" name="bb_turun" value="Ya" required />
+            Ya
+          </label>
+          <label>
+            <input type="radio" name="bb_turun" value="Tidak" required />
+            Tidak
+          </label>
+        </div>
+
+        <label>
+          Apakah Anda mengalami sesak napas atau nyeri dada?
+          <span class="required">*</span>
+        </label>
+        <div class="options">
+          <label>
+            <input type="radio" name="nyeri_dada" value="Ya" required />
+            Ya
+          </label>
+          <label>
+            <input type="radio" name="nyeri_dada" value="Tidak" required />
+            Tidak
+          </label>
+        </div>
+
+        <label>
+          Apakah Anda merasa lemas atau cepat lelah?
+          <span class="required">*</span>
+        </label>
+        <div class="options">
+          <label>
+            <input type="radio" name="lemas" value="Ya" required />
+            Ya
+          </label>
+          <label>
+            <input type="radio" name="lemas" value="Tidak" required />
+            Tidak
+          </label>
+        </div>
+
+        <h2>Skrining Faktor Resiko</h2>
+
+        <label>
+          Apakah Anda pernah atau sedang tinggal/berhubungan erat dengan penderita TBC?  
+          <span class="required">*</span>
+          <p>Sebagai contoh tinggal serumah, sekost se asrama, sekantor</p>
+        </label>
+        <div class="options">
+          <label>
+            <input type="radio" name="kontak" value="Ya" required />
+            Ya
+          </label>
+          <label>
+            <input type="radio" name="kontak" value="Tidak" required />
+            Tidak
+          </label>
+        </div>
+
+        <label>
+          Apakah Anda memiliki penyakit HIV/AIDS?
+          <span class="required">*</span>
+        </label>
+        <div class="options">
+          <label>
+            <input type="radio" name="hiv" value="Ya" required />
+            Ya
+          </label>
+          <label>
+            <input type="radio" name="hiv" value="Tidak" required />
+            Tidak
+          </label>
+        </div>
+
+        <label>
+          Apakah Anda pernah menerima pengobatan untuk TBC sebelumnya?
+          <span class="required">*</span>
+        </label>
+        <div class="options">
+          <label>
+            <input type="radio" name="pengobatan_sebelumnya" value="Ya" required />
+            Ya
+          </label>
+          <label>
+            <input type="radio" name="pengobatan_sebelumnya" value="Tidak" required />
+            Tidak
+          </label>
+        </div>
+
+        <label>
+          Apakah Anda memiliki penyakit diabetes mellitus/kanker/cuci darah?
+          <span class="required">*</span>
+        </label>
+        <div class="options">
+          <label>
+            <input type="radio" name="diabetes" value="Ya" required />
+            Ya
+          </label>
+          <label>
+            <input type="radio" name="diabetes" value="Tidak" required />
+            Tidak
+          </label>
+        </div>
+
+        <label>
+          Apakah Anda merokok atau menggunakan vape?
+          <span class="required">*</span>
+        </label>
+        <div class="options">
+          <label>
+            <input type="radio" name="merokok" value="Ya" required />
+            Ya
+          </label>
+          <label>
+            <input type="radio" name="merokok" value="Tidak" required />
+            Tidak
+          </label>
+        </div>
+
+        <label>
+          Apakah Anda tinggal di asrama, panti asuhan, panti wreda, atau tempat lain yang padat dan kurang ventilasi?  
+          <span class="required">*</span>
+        </label>
+        <div class="options">
+          <label>
+            <input type="radio" name="asrama" value="Ya" required />
+            Ya
+          </label>
+          <label>
+            <input type="radio" name="asrama" value="Tidak" required />
+            Tidak
+          </label>
+        </div>
+
+          <button type="submit" class="btn-submit">Kirim</button>
+        </form>
+
+        <form id="formulir_ya" style="display:none;">
+          <h2>Pengobatan TBC</h2>
+          <label>Dimana anda mendapatkan obat TBC? <span class="required">*</span></label>
+          <input type="text" name="faskes_obat" required />
 
         <label>
           Apakah anda sudah selesai menjalani pengobatan?
-          <span class="required">*</span></label
-        >
+          <span class="required">*</span>
+        </label>
         <div class="options">
-          <label
-            ><input type="radio" name="selesai" value="Ya" required /> Ya</label
-          >
-          <label
-            ><input type="radio" name="selesai" value="Tidak" required />
-            Tidak</label
-          >
-          <label
-            ><input type="radio" name="selesai" value="Mungkin" required />
-            Mungkin</label
-          >
+          <label>
+            <input type="radio" name="selesai_pengobatan" value="Ya" required />
+            Ya
+          </label>
+          <label>
+            <input type="radio" name="selesai_pengobatan" value="Tidak" required />
+            Tidak
+          </label>
+          <label>
+            <input type="radio" name="selesai_pengobatan" value="Mungkin" required />
+            Mungkin
+          </label>
         </div>
 
-        <button type="submit" class="btn-submit">Kirim</button>
-      </form>
+          <button type="submit" class="btn-submit">Kirim</button>
+        </form>
+
+        <!-- HALAMAN HASIL -->
+        <div id="halamanHasil" style="display:none;">
+          <h2>Skrining Gejala dan Faktor Resiko TBC</h2>
+          <p>Terimakasih Telah Mengirimkan jawaban cek skor anda:</p>
+          <p>Skor ≥ 10: Terduga TBC tinggi, segera lakukan pemeriksaan ke Puskesmas ke terdekat</p>
+          <hr>
+          <p>Skor 5-9: Terduga TBC sedang, segera lakukan pemeriksaan ke Puskesmas ke terdekat.</p>
+          <hr>
+          <p>Skor 1-4: Risiko rendah, namun tetap dianjurkan untuk konsultasi jika gejala muncul</p>
+          <hr>
+          <p>Skor 0: Tidak Beresiko TBC selalu jaga gaya hidup sehat</p>
+          <button>Lihat Skor</button>
+        </div>
+      </div>
 
       <div class="success-message" id="successMessage">
         Terima kasih! Formulir Anda telah terkirim.
       </div>
     </div>
-
-    <!-- <script>
-      document
-        .getElementById("formulir")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          const nama = document.getElementById("nama").value.trim();
-          const umur = document.getElementById("umur").value.trim();
-          const gender = document.querySelector('input[name="gender"]:checked');
-          const whatsapp = document.getElementById("whatsapp").value.trim();
-          const fasilitas = document.getElementById("fasilitas").value.trim();
-          const pengobatan = document.querySelector('input[name="pengobatan"]:checked');
-          const selesai = document.querySelector('input[name="selesai"]:checked');
-
-          if (!nama || !umur || !gender || !whatsapp || !fasilitas || !pengobatan || !selesai) {
-            alert("Mohon lengkapi semua data wajib (*).");
-            return;
-          }
-
-          // Simulasi kirim
-          document.getElementById("successMessage").style.display = "block";
-          document.getElementById("formulir").reset();
-
-          // Auto hide success after 3 seconds
-          setTimeout(() => {
-            document.getElementById("successMessage").style.display = "none";
-          }, 3000);
-        });
-    </script> -->
-
-    <script>
-      document
-        .getElementById("formulir")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          const data = {
-            nama: document.getElementById("nama").value.trim(),
-            umur: document.getElementById("umur").value.trim(),
-            gender: document.querySelector('input[name="gender"]:checked')
-              ?.value,
-            whatsapp: document.getElementById("whatsapp").value.trim(),
-            domisili: document.querySelector('input[name="domisili"]:checked')
-              ?.value,
-            alamat: document.getElementById("alamat").value.trim(),
-            kelurahan: document.getElementById("keluarahn").value.trim(),
-            instansi:
-              document.querySelector('input[name="instansi"]:checked')
-                ?.value === "Yang lain"
-                ? document.getElementById("lainnya-text").value.trim()
-                : "Dinsos DIY",
-            pengobatan: document.querySelector(
-              'input[name="pengobatan"]:checked'
-            )?.value,
-            fasilitas: document.getElementById("fasilitas").value.trim(),
-            selesai: document.querySelector('input[name="selesai"]:checked')
-              ?.value,
-          };
-
-          fetch(
-            "https://script.google.com/macros/s/AKfycbxhWzXyBqioT8mqbEqyeRZiB9CfN7Fs-GPZZZBoTyXQd8WhRrroLICxS1HgMXI_4fRP/exec",
-            {
-              method: "POST",
-              mode: "no-cors",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(data),
-            }
-          )
-            .then(() => {
-              document.getElementById("successMessage").style.display = "block";
-              document.getElementById("formulir").reset();
-              setTimeout(() => {
-                document.getElementById("successMessage").style.display =
-                  "none";
-              }, 3000);
-            })
-            .catch((err) => {
-              alert("Terjadi kesalahan saat mengirim data.");
-              console.error(err);
-            });
-        });
-    </script>
-
-    <script>
-      document
-        .getElementById("lainnya-radio")
-        .addEventListener("change", function () {
-          document.getElementById("lainnya-text").disabled = false;
-        });
-
-      const dinsosRadio = document.querySelector('input[value="Dinsos DIY"]');
-      dinsosRadio.addEventListener("change", function () {
-        document.getElementById("lainnya-text").disabled = true;
-        document.getElementById("lainnya-text").value = "";
-      });
-    </script>
+    <script src="index.js"></script>
   </body>
 </html>
