@@ -10,6 +10,7 @@
         background: #f3f4f6;
         margin: 0;
         padding: 0;
+        background-color: #f5eaea;
       }
 
       .container {
@@ -40,7 +41,7 @@
       }
 
       input[type="text"],
-      input[type="email"],
+      input[type="umur"],
       input[type="number"],
       select {
         width: 100%;
@@ -90,6 +91,10 @@
         width: 300px;
       } */
 
+      .required {
+        color: red;
+      }
+
       /* Chrome, Safari, Edge, Opera */
       input::-webkit-outer-spin-button,
       input::-webkit-inner-spin-button {
@@ -115,13 +120,13 @@
       </p>
 
       <form id="formulir">
-        <label for="nama">Nama Lengkap *</label>
+        <label for="nama">Nama Lengkap <span class="required">*</span></label>
         <input type="text" id="nama" name="nama" required />
 
-        <label for="email">Umur *</label>
-        <input type="email" id="email" name="email" required />
+        <label for="umur">Umur <span class="required">*</span></label>
+        <input type="umur" id="umur" name="umur" required />
 
-        <label>Jenis Kelamin *</label>
+        <label>Jenis Kelamin <span class="required">*</span></label>
         <div class="options">
           <label
             ><input type="radio" name="gender" value="Pria" required />
@@ -133,10 +138,12 @@
           >
         </div>
 
-        <label for="whatsapp">No HP/Whatsapp *</label>
+        <label for="whatsapp"
+          >No HP/Whatsapp <span class="required">*</span></label
+        >
         <input type="number" id="whatsapp" name="whatsapp" required />
 
-        <label>Domisili *</label>
+        <label>Domisili <span class="required">*</span></label>
         <div class="options">
           <label
             ><input
@@ -165,17 +172,21 @@
           >
         </div>
 
-        <label for="alamat">Alamat Domisili *</label>
+        <label for="alamat"
+          >Alamat Domisili <span class="required">*</span></label
+        >
         <p>Alamat tempat tinggal rumah saat ini jika tidak ada alamat KTP</p>
         <input type="text" id="alamat" name="alamat" required />
 
-        <label for="kelurahan">Kelurahan Domisili *</label>
+        <label for="kelurahan">
+          Kelurahan Domisili <span class="required">*</span>
+        </label>
         <input type="text" id="keluarahn" name="kelurahan" required />
 
-        <label
-          >Nama Tempat Periksa/ Instansi/Organisasi/Sekolah/Tempat Kerja
-          *</label
-        >
+        <label>
+          Nama Tempat Periksa/ Instansi/Organisasi/Sekolah/Tempat Kerja
+          <span class="required">*</span>
+        </label>
         <div class="options">
           <label
             ><input type="radio" name="instansi" value="Dinsos DIY" required />
@@ -199,7 +210,10 @@
           />
         </div>
 
-        <label>Apakah saat ini anda sedang menjalani pengobatan TBC *</label>
+        <label
+          >Apakah saat ini anda sedang menjalani pengobatan TBC
+          <span class="required">*</span></label
+        >
         <div class="options">
           <label
             ><input type="radio" name="pengobatan" value="Ya" required />
@@ -211,13 +225,16 @@
           >
         </div>
 
-        <label for="nama"
-          >Dimana anda mendapatkan obat TBC? sebutkan nama fasilitas yang
-          memberikan obat TBC *</label
-        >
+        <label for="nama">
+          Dimana anda mendapatkan obat TBC? sebutkan nama fasilitas yang
+          memberikan obat TBC <span class="required">*</span>
+        </label>
         <input type="text" id="fasilitas" name="fasilitas" required />
 
-        <label>Apakah anda sudah selesai menjalani pengobatan? *</label>
+        <label>
+          Apakah anda sudah selesai menjalani pengobatan?
+          <span class="required">*</span></label
+        >
         <div class="options">
           <label
             ><input type="radio" name="selesai" value="Ya" required /> Ya</label
@@ -278,7 +295,7 @@
 
           const data = {
             nama: document.getElementById("nama").value.trim(),
-            umur: document.getElementById("email").value.trim(),
+            umur: document.getElementById("umur").value.trim(),
             gender: document.querySelector('input[name="gender"]:checked')
               ?.value,
             whatsapp: document.getElementById("whatsapp").value.trim(),
