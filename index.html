@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulir Google Form Clone</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f3f4f6;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 700px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        margin-bottom: 10px;
+        font-size: 24px;
+        color: #202124;
+      }
+
+      p.desc {
+        color: #5f6368;
+        font-size: 14px;
+        margin-bottom: 30px;
+      }
+
+      label {
+        display: block;
+        margin-top: 20px;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="number"],
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 6px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      .options {
+        margin-top: 10px;
+      }
+
+      .options label {
+        font-weight: normal;
+        display: block;
+      }
+
+      .btn-submit {
+        margin-top: 30px;
+        background-color: #1a73e8;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .btn-submit:hover {
+        background-color: #1765cc;
+      }
+
+      .success-message {
+        display: none;
+        margin-top: 20px;
+        background: #d7f0d7;
+        padding: 10px;
+        border-radius: 6px;
+        color: #2e7d32;
+      }
+/* 
+      .lainnya-text {
+        margin-left: 10px;
+        padding: 5px;
+        width: 300px;
+      } */
+
+            /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Skrining Gejala dan Faktor Resiko TBC</h1>
+      <p class="desc">
+        Formulir ini digunakan untuk mengetahui apakah anda beresiko TBC atau
+        tidak dan agar bisa mendapatkan pengobatan segera jika resiko tinggi
+        TBC. Form Skrining ini dibuat oleh Tim TBC Dinas Kesehatan DIY jika
+        membutuhkan informasi lebih lanjut dapat menghubungi melalui email:
+        tbyogyakarta@gmail.com instagaram @tbyogyakarta@gmail.com
+      </p>
+
+      <form id="formulir">
+        <label for="nama">Nama Lengkap *</label>
+        <input type="text" id="nama" name="nama" required />
+
+        <label for="email">Umur *</label>
+        <input type="email" id="email" name="email" required />
+
+        <label>Jenis Kelamin *</label>
+        <div class="options">
+          <label
+            ><input type="radio" name="gender" value="Pria" required />
+            Pria</label
+          >
+          <label
+            ><input type="radio" name="gender" value="Wanita" required />
+            Wanita</label
+          >
+        </div>
+
+        <label for="whatsapp">No HP/Whatsapp  *</label>
+        <input type="number" id="whatsapp" name="whatsapp" required />
+
+        <label>Domisili *</label>
+        <div class="options">
+          <label
+            ><input
+              type="radio"
+              name="domisili"
+              value="Kota Yogyakarta"
+              required
+            />
+            Kota Yogyakarta</label
+          >
+          <label
+            ><input type="radio" name="domisili" value="Bantul" required />
+            Bantul</label
+          >
+          <label
+            ><input type="radio" name="domisili" value="Sleman" required />
+            Sleman</label
+          >
+          <label
+            ><input type="radio" name="domisili" value="Kulon Progo" required />
+            Kulon Progo</label
+          >
+          <label
+            ><input type="radio" name="domisili" value="Kulon Progo" required />
+            Gunungkidul</label
+          >
+        </div>
+
+        <label for="alamat">Alamat Domisili *</label>
+        <p>Alamat tempat tinggal rumah saat ini jika tidak ada alamat KTP</p>
+        <input type="text" id="alamat" name="alamat" required />
+
+        <label for="kelurahan">Kelurahan Domisili *</label>
+        <input type="text" id="keluarahn" name="kelurahan" required />
+
+        <label
+          >Nama Tempat Periksa/ Instansi/Organisasi/Sekolah/Tempat Kerja
+          *</label
+        >
+        <div class="options">
+          <label
+            ><input type="radio" name="instansi" value="Dinsos DIY" required />
+            Dinsos DIY
+          </label>
+          <label
+            ><input type="radio" name="instansi" value="Yang lain" id="lainnya-radio" required /> Yang
+            lain:
+          </label>
+          <input
+            type="text"
+            id="lainnya-text"
+            placeholder="Tulis nama instansi"
+            disabled
+          />
+        </div>
+
+        <label>Apakah saat ini anda sedang menjalani pengobatan TBC *</label>
+        <div class="options">
+          <label
+            ><input type="radio" name="pengobatan" value="Ya" required />
+            Ya</label
+          >
+          <label
+            ><input type="radio" name="pengobatan" value="Tidak" required />
+            Tidak</label
+          >
+        </div>
+
+        <label for="nama">Dimana anda mendapatkan obat TBC? sebutkan nama fasilitas yang memberikan obat TBC *</label>
+        <input type="text" id="fasilitas" name="fasilitas" required />
+
+                <label>Apakah anda sudah selesai menjalani pengobatan? *</label>
+        <div class="options">
+          <label
+            ><input type="radio" name="selesai" value="Ya" required />
+            Ya</label
+          >
+          <label
+            ><input type="radio" name="selesai" value="Tidak" required />
+            Tidak</label
+          >
+          <label
+            ><input type="radio" name="selesai" value="Mungkin" required />
+            Mungkin</label
+          >
+        </div>
+
+        <button type="submit" class="btn-submit">Kirim</button>
+      </form>
+
+      <div class="success-message" id="successMessage">
+        Terima kasih! Formulir Anda telah terkirim.
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("formulir")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const nama = document.getElementById("nama").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const gender = document.querySelector('input[name="gender"]:checked');
+          const whatsapp = document.getElementById("whatsapp").value.trim();
+          const fasilitas = document.getElementById("fasilitas").value.trim();
+          const pengobatan = document.querySelector('input[name="pengobatan"]:checked');
+          const selesai = document.querySelector('input[name="selesai"]:checked');
+
+          if (!nama || !email || !gender || !whatsapp || !fasilitas || !pengobatan || !selesai) {
+            alert("Mohon lengkapi semua data wajib (*).");
+            return;
+          }
+
+          // Simulasi kirim
+          document.getElementById("successMessage").style.display = "block";
+          document.getElementById("formulir").reset();
+
+          // Auto hide success after 3 seconds
+          setTimeout(() => {
+            document.getElementById("successMessage").style.display = "none";
+          }, 3000);
+        });
+    </script>
+
+    <script>
+      document.getElementById("lainnya-radio").addEventListener("change", function () {
+          document.getElementById("lainnya-text").disabled = false;
+        });
+
+      const dinsosRadio = document.querySelector('input[value="Dinsos DIY"]');
+      dinsosRadio.addEventListener("change", function () {
+        document.getElementById("lainnya-text").disabled = true;
+        document.getElementById("lainnya-text").value = "";
+      });
+    </script>
+  </body>
+</html>
