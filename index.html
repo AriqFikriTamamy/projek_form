@@ -83,24 +83,24 @@
         border-radius: 6px;
         color: #2e7d32;
       }
-/* 
+      /* 
       .lainnya-text {
         margin-left: 10px;
         padding: 5px;
         width: 300px;
       } */
 
-            /* Chrome, Safari, Edge, Opera */
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
-        }
+      }
 
-        /* Firefox */
-        input[type=number] {
+      /* Firefox */
+      input[type="number"] {
         -moz-appearance: textfield;
-        }
+      }
     </style>
   </head>
   <body>
@@ -133,7 +133,7 @@
           >
         </div>
 
-        <label for="whatsapp">No HP/Whatsapp  *</label>
+        <label for="whatsapp">No HP/Whatsapp *</label>
         <input type="number" id="whatsapp" name="whatsapp" required />
 
         <label>Domisili *</label>
@@ -182,8 +182,14 @@
             Dinsos DIY
           </label>
           <label
-            ><input type="radio" name="instansi" value="Yang lain" id="lainnya-radio" required /> Yang
-            lain:
+            ><input
+              type="radio"
+              name="instansi"
+              value="Yang lain"
+              id="lainnya-radio"
+              required
+            />
+            Yang lain:
           </label>
           <input
             type="text"
@@ -205,14 +211,16 @@
           >
         </div>
 
-        <label for="nama">Dimana anda mendapatkan obat TBC? sebutkan nama fasilitas yang memberikan obat TBC *</label>
+        <label for="nama"
+          >Dimana anda mendapatkan obat TBC? sebutkan nama fasilitas yang
+          memberikan obat TBC *</label
+        >
         <input type="text" id="fasilitas" name="fasilitas" required />
 
-                <label>Apakah anda sudah selesai menjalani pengobatan? *</label>
+        <label>Apakah anda sudah selesai menjalani pengobatan? *</label>
         <div class="options">
           <label
-            ><input type="radio" name="selesai" value="Ya" required />
-            Ya</label
+            ><input type="radio" name="selesai" value="Ya" required /> Ya</label
           >
           <label
             ><input type="radio" name="selesai" value="Tidak" required />
@@ -232,21 +240,21 @@
       </div>
     </div>
 
-    <script>
+    <!-- <script>
       document
         .getElementById("formulir")
         .addEventListener("submit", function (e) {
           e.preventDefault();
 
           const nama = document.getElementById("nama").value.trim();
-          const email = document.getElementById("email").value.trim();
+          const umur = document.getElementById("umur").value.trim();
           const gender = document.querySelector('input[name="gender"]:checked');
           const whatsapp = document.getElementById("whatsapp").value.trim();
           const fasilitas = document.getElementById("fasilitas").value.trim();
           const pengobatan = document.querySelector('input[name="pengobatan"]:checked');
           const selesai = document.querySelector('input[name="selesai"]:checked');
 
-          if (!nama || !email || !gender || !whatsapp || !fasilitas || !pengobatan || !selesai) {
+          if (!nama || !umur || !gender || !whatsapp || !fasilitas || !pengobatan || !selesai) {
             alert("Mohon lengkapi semua data wajib (*).");
             return;
           }
@@ -260,10 +268,67 @@
             document.getElementById("successMessage").style.display = "none";
           }, 3000);
         });
+    </script> -->
+
+    <script>
+      document
+        .getElementById("formulir")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const data = {
+            nama: document.getElementById("nama").value.trim(),
+            umur: document.getElementById("email").value.trim(), // sebenarnya ini bukan email, tapi umur
+            gender: document.querySelector('input[name="gender"]:checked')
+              ?.value,
+            whatsapp: document.getElementById("whatsapp").value.trim(),
+            domisili: document.querySelector('input[name="domisili"]:checked')
+              ?.value,
+            alamat: document.getElementById("alamat").value.trim(),
+            kelurahan: document.getElementById("keluarahn").value.trim(),
+            instansi:
+              document.querySelector('input[name="instansi"]:checked')
+                ?.value === "Yang lain"
+                ? document.getElementById("lainnya-text").value.trim()
+                : "Dinsos DIY",
+            pengobatan: document.querySelector(
+              'input[name="pengobatan"]:checked'
+            )?.value,
+            fasilitas: document.getElementById("fasilitas").value.trim(),
+            selesai: document.querySelector('input[name="selesai"]:checked')
+              ?.value,
+          };
+
+          fetch(
+            "https://script.google.com/macros/s/AKfycbxhWzXyBqioT8mqbEqyeRZiB9CfN7Fs-GPZZZBoTyXQd8WhRrroLICxS1HgMXI_4fRP/exec",
+            {
+              method: "POST",
+              mode: "no-cors",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            }
+          )
+            .then(() => {
+              document.getElementById("successMessage").style.display = "block";
+              document.getElementById("formulir").reset();
+              setTimeout(() => {
+                document.getElementById("successMessage").style.display =
+                  "none";
+              }, 3000);
+            })
+            .catch((err) => {
+              alert("Terjadi kesalahan saat mengirim data.");
+              console.error(err);
+            });
+        });
     </script>
 
     <script>
-      document.getElementById("lainnya-radio").addEventListener("change", function () {
+      document
+        .getElementById("lainnya-radio")
+        .addEventListener("change", function () {
           document.getElementById("lainnya-text").disabled = false;
         });
 
