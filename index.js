@@ -34,6 +34,38 @@ formGejala.addEventListener("submit", function (e) {
         totalSkor += skor;
     });
 
+    // Pendefinisian Data
+    let data = {
+        nama: document.getElementById("nama").value,
+        umur: document.getElementById("umur").value,
+        gender: document.querySelector('input[name="gender"]:checked')?.value,
+        whatsapp: document.getElementById("whatsapp").value,
+        domisili: document.querySelector('input[name="domisili"]:checked')?.value,
+        alamat: document.getElementById("alamat").value,
+        kelurahan: document.getElementById("kelurahan").value,
+        instansi: document.querySelector('input[name="instansi"]:checked')?.value || document.getElementById("lainnya-text").value,
+        pengobatan: "Tidak",
+
+        batuk_berdahak: document.querySelector('input[name="batuk_berdahak"]:checked')?.value,
+        batuk_2_minggu: document.querySelector('input[name="batuk_2_minggu"]:checked')?.value,
+        batuk_berdarah: document.querySelector('input[name="batuk_berdarah"]:checked')?.value,
+        demam: document.querySelector('input[name="demam"]:checked')?.value,
+        keringat: document.querySelector('input[name="keringat"]:checked')?.value,
+        bb_turun: document.querySelector('input[name="bb_turun"]:checked')?.value,
+        nyeri_dada: document.querySelector('input[name="nyeri_dada"]:checked')?.value,
+        lemas: document.querySelector('input[name="lemas"]:checked')?.value,
+        kontak: document.querySelector('input[name="kontak"]:checked')?.value,
+        hiv: document.querySelector('input[name="hiv"]:checked')?.value,
+        pengobatan_sebelumnya: document.querySelector('input[name="pengobatan_sebelumnya"]:checked')?.value,
+        diabetes: document.querySelector('input[name="diabetes"]:checked')?.value,
+        merokok: document.querySelector('input[name="merokok"]:checked')?.value,
+        asrama: document.querySelector('input[name="asrama"]:checked')?.value,
+
+        skor: totalSkor,
+    };
+
+    sendToSpreadsheet(data);
+
     formGejala.style.display = "none";
     hasil.style.display = "block";
 
@@ -50,122 +82,44 @@ formPengobatan.addEventListener("submit", function (e) {
         totalSkor += skor;
     });
 
+    let data = {
+        nama: document.getElementById("nama").value,
+        umur: document.getElementById("umur").value,
+        gender: document.querySelector('input[name="gender"]:checked')?.value,
+        whatsapp: document.getElementById("whatsapp").value,
+        domisili: document.querySelector('input[name="domisili"]:checked')?.value,
+        alamat: document.getElementById("alamat").value,
+        kelurahan: document.getElementById("kelurahan").value,
+        instansi: document.querySelector('input[name="instansi"]:checked')?.value || document.getElementById("lainnya-text").value,
+        pengobatan: "Ya",
+
+        faskes_obat: document.getElementById("faskes_obat").value,
+        selesai_pengobatan: document.querySelector('input[name="selesai_pengobatan"]:checked').value,
+        skor: totalSkor
+    }
+
+    sendToSpreadsheet(data);
+
     formPengobatan.style.display = "none";
     hasil.style.display = "block";
 
     hasil.innerHTML += `<p><strong>Total Skor Anda: ${totalSkor}</strong></p>`;
 });
-//       document
-//         .getElementById("formulir")
-//         .addEventListener("submit", function (e) {
-//           e.preventDefault();
 
-//           const nama = document.getElementById("nama").value.trim();
-//           const umur = document.getElementById("umur").value.trim();
-//           const gender = document.querySelector('input[name="gender"]:checked');
-//           const whatsapp = document.getElementById("whatsapp").value.trim();
-//           const fasilitas = document.getElementById("fasilitas").value.trim();
-//           const pengobatan = document.querySelector('input[name="pengobatan"]:checked');
-//           const selesai = document.querySelector('input[name="selesai"]:checked');
-
-//           if (!nama || !umur || !gender || !whatsapp || !fasilitas || !pengobatan || !selesai) {
-//             alert("Mohon lengkapi semua data wajib (*).");
-//             return;
-//           }
-
-//           // Simulasi kirim
-//           document.getElementById("successMessage").style.display = "block";
-//           document.getElementById("formulir").reset();
-
-//           // Auto hide success after 3 seconds
-//           setTimeout(() => {
-//             document.getElementById("successMessage").style.display = "none";
-//           }, 3000);
-//         });
-
-//       document
-//         .getElementById("formulir")
-//         .addEventListener("submit", function (e) {
-//           e.preventDefault();
-
-//           const data = {
-//             nama: document.getElementById("nama").value.trim(),
-//             umur: document.getElementById("umur").value.trim(),
-//             gender: document.querySelector('input[name="gender"]:checked')
-//               ?.value,
-//             whatsapp: document.getElementById("whatsapp").value.trim(),
-//             domisili: document.querySelector('input[name="domisili"]:checked')
-//               ?.value,
-//             alamat: document.getElementById("alamat").value.trim(),
-//             kelurahan: document.getElementById("keluarahn").value.trim(),
-//             instansi:
-//               document.querySelector('input[name="instansi"]:checked')
-//                 ?.value === "Yang lain"
-//                 ? document.getElementById("lainnya-text").value.trim()
-//                 : "Dinsos DIY",
-//             pengobatan: document.querySelector(
-//               'input[name="pengobatan"]:checked'
-//             )?.value,
-//             // fasilitas: document.getElementById("fasilitas").value.trim(),
-//             selesai: document.querySelector('input[name="selesai"]:checked')
-//               ?.value,
-//           };
-
-//           fetch(
-//             "https://script.google.com/macros/s/AKfycbxhWzXyBqioT8mqbEqyeRZiB9CfN7Fs-GPZZZBoTyXQd8WhRrroLICxS1HgMXI_4fRP/exec",
-//             {
-//               method: "POST",
-//               mode: "no-cors",
-//               headers: {
-//                 "Content-Type": "application/json",
-//               },
-//               body: JSON.stringify(data),
-//             }
-//           )
-//             .then(() => {
-//               document.getElementById("successMessage").style.display = "block";
-//               document.getElementById("formulir").reset();
-//               setTimeout(() => {
-//                 document.getElementById("successMessage").style.display =
-//                   "none";
-//               }, 3000);
-//             })
-//             .catch((err) => {
-//               alert("Terjadi kesalahan saat mengirim data.");
-//               console.error(err);
-//             });
-//         });
-
-
-//       document
-//         .getElementById("lainnya-radio")
-//         .addEventListener("change", function () {
-//           document.getElementById("lainnya-text").disabled = false;
-//         });
-
-//       const dinsosRadio = document.querySelector('input[value="Dinsos DIY"]');
-//       dinsosRadio.addEventListener("change", function () {
-//         document.getElementById("lainnya-text").disabled = true;
-//         document.getElementById("lainnya-text").value = "";
-//       });
-
-//     //   Logika ke frmulir 2
-// const step1 = document.getElementById("formulir1");
-// const step2 = document.getElementById("formulir2");
-
-// step1.addEventListener("submit", function (e) {
-//   e.preventDefault();
-
-//   const pengobatan = document.querySelector('input[name="pengobatan"]:checked');
-//   if (pengobatan && pengobatan.value === "Tidak") {
-//     step1.style.display = "none";
-//     step2.style.display = "block";
-//   } else {
-//     alert("Terima kasih! Anda sedang menjalani pengobatan.");
-//   }
-// });
-
-// step2.addEventListener("submit", function (e) {
-//   e.preventDefault();
-//   alert("Terima kasih! Formulir Anda telah dikirim.");
-// });
+// Ajax untuk POST data ke Google Spreadsheet
+function sendToSpreadsheet(data) {
+  fetch("https://script.google.com/macros/s/AKfycbzxYqDgZRfeA4P2Ue0ZMhl8uGbfGCCTP6JaH_vQmJYl3M25ieHXkWnLsk92iRBmzahozg/exec", {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+    "Content-Type": "application/json",
+  },
+    body: JSON.stringify(data),
+  })
+    // .then((res) => res.text())
+    .then((res) => {
+        console.log("Respon dari Google Script:", res);
+      document.getElementById("successMessage").style.display = "block";
+    })
+    .catch((err) => console.error("Gagal mengirim ke spreadsheet:", err));
+}
