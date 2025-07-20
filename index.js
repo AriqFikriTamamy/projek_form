@@ -66,6 +66,26 @@ formGejala.addEventListener("submit", function (e) {
 
     sendToSpreadsheet(data);
 
+    // Ajax untuk POST data ke Google Spreadsheet
+    function sendToSpreadsheet(data) {
+    fetch("https://script.google.com/macros/s/AKfycbyAhw4KX9J0CFKhvQtMLnPCZvq-peMQZFPtqcOtit5CyYapFSA4ktC-g0Tk7VFFnkn0/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+        "Content-Type": "application/json",
+    },
+        body: JSON.stringify(data),
+    })
+        // .then((res) => res.text())
+        .then((res) => {
+            console.log("Respon dari Google Script:", res);
+        document.getElementById("successMessage").style.display = "block";
+        })
+        .catch((err) => {
+            console.error("Gagal mengirim ke spreadsheet:", err);
+        })
+    }
+
     formGejala.style.display = "none";
     hasil.style.display = "block";
 
@@ -83,22 +103,43 @@ formPengobatan.addEventListener("submit", function (e) {
     });
 
     let data = {
-        nama: document.getElementById("nama").value,
-        umur: document.getElementById("umur").value,
+        nama: document.getElementById("nama").value.trim(),
+        umur: document.getElementById("umur").value.trim(),
         gender: document.querySelector('input[name="gender"]:checked')?.value,
-        whatsapp: document.getElementById("whatsapp").value,
+        whatsapp: document.getElementById("whatsapp").value.trim(),
         domisili: document.querySelector('input[name="domisili"]:checked')?.value,
-        alamat: document.getElementById("alamat").value,
-        kelurahan: document.getElementById("kelurahan").value,
+        alamat: document.getElementById("alamat").value.trim(),
+        kelurahan: document.getElementById("kelurahan").value.trim(),
         instansi: document.querySelector('input[name="instansi"]:checked')?.value || document.getElementById("lainnya-text").value,
         pengobatan: "Ya",
 
-        faskes_obat: document.getElementById("faskes_obat").value,
+        faskes_obat: document.getElementById("faskes_obat").value.trim(),
         selesai_pengobatan: document.querySelector('input[name="selesai_pengobatan"]:checked').value,
         skor: totalSkor
     }
 
     sendToSpreadsheet(data);
+
+    // Ajax untuk POST data ke Google Spreadsheet
+    function sendToSpreadsheet(data) {
+    fetch("https://script.google.com/macros/s/AKfycbyAhw4KX9J0CFKhvQtMLnPCZvq-peMQZFPtqcOtit5CyYapFSA4ktC-g0Tk7VFFnkn0/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+        "Content-Type": "application/json",
+    },
+        body: JSON.stringify(data),
+    })
+        // .then((res) => res.text())
+        .then(() => {
+        // console.log("Respon dari Google Script:", res);
+        document.getElementById("successMessage").style.display = "block";
+        // document.getElementById("formulir").reset();
+        })
+        .catch((err) => {
+            console.error("Gagal mengirim ke spreadsheet:", err);
+        })
+    }
 
     formPengobatan.style.display = "none";
     hasil.style.display = "block";
@@ -106,20 +147,4 @@ formPengobatan.addEventListener("submit", function (e) {
     hasil.innerHTML += `<p><strong>Total Skor Anda: ${totalSkor}</strong></p>`;
 });
 
-// Ajax untuk POST data ke Google Spreadsheet
-function sendToSpreadsheet(data) {
-  fetch("https://script.google.com/macros/s/AKfycbzxYqDgZRfeA4P2Ue0ZMhl8uGbfGCCTP6JaH_vQmJYl3M25ieHXkWnLsk92iRBmzahozg/exec", {
-    method: "POST",
-    mode: "no-cors",
-    headers: {
-    "Content-Type": "application/json",
-  },
-    body: JSON.stringify(data),
-  })
-    // .then((res) => res.text())
-    .then((res) => {
-        console.log("Respon dari Google Script:", res);
-      document.getElementById("successMessage").style.display = "block";
-    })
-    .catch((err) => console.error("Gagal mengirim ke spreadsheet:", err));
-}
+
