@@ -27,7 +27,6 @@ formGejala.addEventListener("submit", function (e) {
     
     totalSkor = 0;
 
-    // Ambil semua radio yang dipilih
     const checkedRadios = formGejala.querySelectorAll('input[type="radio"]:checked');
 
     checkedRadios.forEach((radio) => {
@@ -44,8 +43,17 @@ formGejala.addEventListener("submit", function (e) {
 formPengobatan.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    const checkedRadios = formPengobatan.querySelectorAll('input[type="radio"]:checked');
+
+    checkedRadios.forEach((radio) => {
+        const skor = parseInt(radio.getAttribute("data-score")) || 0;
+        totalSkor += skor;
+    });
+
     formPengobatan.style.display = "none";
     hasil.style.display = "block";
+
+    hasil.innerHTML += `<p><strong>Total Skor Anda: ${totalSkor}</strong></p>`;
 });
 //       document
 //         .getElementById("formulir")
